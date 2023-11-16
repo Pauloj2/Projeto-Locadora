@@ -1,0 +1,135 @@
+Algoritmo "PROJETO2"
+//Disciplina: Introdução aos Algoritmo
+//Professor: Gilberto
+//Descrição: Locadora De Filmes
+//Alunos:Ludimila Rodrigues, Márcia Helena, Paulo Junior, Ranielly Ferreira
+//Data: 15/11/2023
+// EMPRESA : GAME&CODES
+Var
+   abertura : inteiro
+   //==============================================================================
+funcao cadastrar : inteiro
+
+var
+
+inicio
+
+fimfuncao
+//==============================================================================
+funcao disponiveis : inteiro
+
+var
+
+inicio
+
+fimfuncao
+
+//==============================================================================
+funcao locados : inteiro
+
+var
+
+inicio
+
+fimfuncao
+
+//==============================================================================
+funcao alugar : inteiro
+
+var
+
+inicio
+
+fimfuncao
+
+//==============================================================================
+funcao devolver : inteiro
+
+var
+
+inicio
+
+fimfuncao
+
+//==============================================================================
+funcao maislocado : inteiro
+
+var
+
+inicio
+
+fimfuncao
+
+//==============================================================================
+
+funcao menu : inteiro
+
+var
+   opcao : inteiro
+   comando : inteiro
+inicio
+   repita
+      escreval ("=============================")
+      escreval (" OPÇÕES DA LOCADORA DE FILMES")
+      escreval ("=============================")
+      escreval (" ")
+      escreval ("[1] Cadastrar um filme ")
+      escreval ("[2] Listar Filmes locados e disponíveis ")
+      escreval ("[3] Filmes locados ")
+      escreval ("[4] Alugar um filme ")
+      escreval ("[5] Devolver um filme ")
+      escreval ("[6] Filme mais locado ")
+      escreval ("[7] Sair do programa  ")
+      escreval (" ")
+      escreval ("Digite um número para escolher uma opção: ")
+      leia (opcao)
+      escolha (opcao)
+      caso 1
+         comando <- cadastrar
+      caso 2
+         comando <- disponíveis
+      caso 3
+         comando <- locados
+      caso 4
+         comando <- alugar
+      caso 5
+         comando <- devolver
+      caso 6
+         comando <- maislocado
+      caso 7
+
+      fimescolha
+   ate (opcao = 7)
+fimfuncao
+
+//==============================================================================
+Inicio
+   escreval ("               ___                  __        ___        _         ")
+   escreval ("              / __|__ _ _ __  ___  / _|___   / __|___ __| |___ ___ ")
+   escreval ("             | (_ / _` | '  \/ -_) > _|_ _| | (__/ _ / _` / -_(_-< ")
+   escreval ("              \___\__,_|_|_|_\___| \_____|   \___\___\__,_\___/__/ ")
+   escreval ("                                         o                         ")
+   escreval ("                                    o    |                         ")
+   escreval ("                                     \   |                         ")
+   escreval ("                                      \  |                         ")
+   escreval ("                                       \.|-.                       ")
+   escreval ("                                       (\|  )                      ")
+   escreval ("                              .==================.                 ")
+   escreval ("                              | .--------------. |                 ")
+   escreval ("                              | |::.::.::.::.::| |                 ")
+   escreval ("                              | |'::'::'::'::':| |                 ")
+   escreval ("                              | |::.::.::.::.::| |                 ")
+   escreval ("                              | |:'::'::'::'::'| |                 ")
+   escreval ("                              | |::.::.::.::.::| |                 ")
+   escreval ("                              | '--------------'o|                 ")
+   escreval ("                              | LI LI '''''''   o|                 ")
+   escreval ("                              |==================|                 ")
+   escreval ("                              |  .------------.  |                 ")
+   escreval ("                              | /              \ |                 ")
+   escreval ("                              |/                \|                 ")
+   escreval ("                              '                  '                 ")
+   abertura <- menu
+
+
+
+Fimalgoritmo
