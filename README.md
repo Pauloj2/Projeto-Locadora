@@ -14,11 +14,17 @@ O trabalho se consiste em desenvolver um projeto funcional com as funcionalidade
 descritas a seguir. O algoritmo deve ter um menu inicial, com as seguintes opções:
 
 **1. Cadastrar um filme**
+
 **2. Listar Filmes locados e disponíveis**
+
 **3. Filmes locados**
+
 **4. Alugar um filme**
+
 **5. Devolver um filme**
+
 **6. Filme mais locado**
+
 **7. Sair do programa**
    
 **opção cadastrar filme** deve armazenar dos dados do filme (nome, ano de 
