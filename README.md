@@ -1,6 +1,8 @@
 # Projeto 2-Locadora de Filmes
 **1º Período – Conceitos de Algoritmos Professor Gilberto Viana de Oliveira**
+
 **1. DESCRIÇÃO**
+
 O trabalho deve, obrigatoriamente, ser desenvolvido em grupos de 4 a 6 pessoas.
 O ano é 2000, vocês são contratados para fazer um programa de armazenamento de 
 informações para um videolocadora (em caso de dúvidas sobre o que é isso ou se 
