@@ -1,0 +1,316 @@
+Algoritmo "PROJETO2"
+//Disciplina: Introdução aos Algoritmo
+//Professor: Gilberto
+//Descrição: Locadora De Filmes
+//
+//Alunos: Paulo Junior,Ranielly Ferreira, Ludimila Rodrigues, Márcia Helena
+//          Leandro Thiago, Vitor Augusto.
+//
+//Data: 15/11/2023
+// EMPRESA : GAME&CODES
+Var
+   abertura, maior : inteiro
+   quant, quantitot : inteiro
+   nomef: vetor[0..9] de caractere
+   anof: vetor[0..9] de inteiro
+   vezesalug: vetor[0..9] de inteiro
+   locado: vetor[0..9] de inteiro
+
+//==============================================================================
+//A opção cadastrar filme deve armazenar dos dados do filme (nome, ano de
+//lançamento, quantidade de vezes que foi alugado, se está ou não locado).
+//Assuma que cada filme só terá uma cópia cadastrada. Deve ser possível  filmes
+//cadastrar até 10 diferentes.
+funcao cadastrar : inteiro
+
+var
+   n, ano, vezes, i, loc : inteiro
+   nome : caractere
+inicio
+   escreval (" ")
+   escreval ("+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=")
+   escreval ("PODEM SER CADASTRADOS NO MAXIMO 10 FILMES")
+   escreval ("+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=")
+   escreval (" ")
+   repita
+      escreva ("Quantos Filmes deseja cadastrar:  ")
+      leia (quant)
+      escreval (" ")
+   ate (quant < 11) e (quant > 0)
+   quantitot <- (quantitot + quant)
+   para i de 0 ate (quant - 1) passo 1 faca
+      se (n >= 1) entao
+         repita
+            escreva ("Qual o nome do outro filme ?:  ")
+            leia (nome)
+         ate (nome <> "")
+         nomef[i] <- nome
+         escreval (" ")
+      senao
+         repita
+            escreva ("Qual o nome do filme ?:  ")
+            leia (nome)
+         ate (nome <> "")
+         nomef[i] <- nome
+         escreval (" ")
+      fimse
+      repita
+         escreva ("Em que ano o filme foi lançado ?:  ")
+         leia (ano)
+      ate (ano >= 1976) e (ano <= 2023)
+      // O primeiro filme em VHS foi lançado em 1976.
+      anof[i] <- ano
+      escreval (" ")
+      escreva ("Quantas vezes ele foi alugado ?:  ")
+      leia (vezes)
+      vezesalug[i] <- vezes
+      escreval (" ")
+      repita
+         escreval ("O filme está locado?:  ")
+         escreval ("Digite 1 para SIM")
+         escreval ("Digite 2 para NÃO")
+         leia (loc)
+      ate (loc = 1) ou (loc = 2)
+      locado[i] <- loc
+      escreval (" ")
+      n <- n + 1
+      escreval ("=====================================")
+   fimpara
+   retorne 0
+fimfuncao
+//==============================================================================
+//A opção Listar Filmes disponíveis para locação deve mostrar na tela as
+//informações de cada um dos filmes que estão cadastrados. Dados “em branco”
+//devem ser ignorados. Exemplo, no caso de ter cadastrado 3 filmes, apenas
+//os 3 devem ser mostrados e não os 10 (tamanho final dos vetores).
+funcao disponiveis : inteiro
+
+var
+   i, cont : inteiro
+inicio
+   cont <- 0
+   para i de 0 ate (quantitot - 1) passo 1 faca
+      se (locado[i] = 2) entao
+         cont <- cont + 1
+      fimse
+   fimpara
+   para i de 0 ate (quantitot - 1) passo 1 faca
+      se (locado[i] = 2) entao
+         escreval ("")
+         escreval ("+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=")
+         escreval ("NOME DO FILME : ",nomef[i])
+         escreval ("+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=")
+         escreval ("")
+         escreval ("ANO DE LANÇAMENTO : (",anof[i],")")
+         escreval ("Este filme foi alugado : (",vezesalug[i],")")
+         escreval ("DISPONIVEL PARA LOCAR ")
+         escreval ("")
+         escreval ("")
+      fimse
+   fimpara
+   se (cont = 0) entao
+         escreval ("====================================")
+         escreval ("NÃO HÁ FILMES DISPONIVEIS PARA LOCAR")
+         escreval ("====================================")
+         escreval ("              ___________           ")
+         escreval ("             |.---------.|          ")
+         escreval ("             ||  x   x  ||          ")
+         escreval ("             ||  x   x  ||          ")
+         escreval ("             ||         ||          ")
+         escreval ("             |'---------'|          ")
+         escreval ("              `)__ ____('           ")
+         escreval ("              [=== -- o ]           ")
+         escreval ("              '---------'           ")
+         escreval ("------------------------------------")
+   fimse
+   retorne 0
+fimfuncao
+
+//==============================================================================
+//A opção Filmes locados deve listar apenas os nomes dos filmes que já estão locados
+//por algum cliente qualquer.
+funcao indisponivel : inteiro
+
+var
+   i : inteiro
+inicio
+   para i de 0 ate (quantitot - 1) passo 1 faca
+      se (locado[i] = 1) entao
+        escreval ("")
+        escreval ("------------------------------------")
+        escreval ("FILME LOCADO NO MOMENTO : ",nomef[i])
+        escreval ("------------------------------------")
+        escreval ("")
+        escreval ("ANO DE LANÇAMENTO : (",anof[i],")")
+        escreval ("Este filme foi alugado : (",vezesalug[i],")")
+        escreval ("INDISPONIVEL PARA LOCAR ")
+        escreval ("")
+        escreval ("")
+      fimse
+   fimpara
+   retorne 0
+fimfuncao
+
+//==============================================================================
+//A opção Alugar um filme deve possibilitar ao usuário escolher dentre a lista
+//de filmes disponíveis e marcar como locado.
+funcao alugar : inteiro
+
+var
+   i, decisao : inteiro
+inicio
+   para i de 0 ate (quantitot - 1) passo 1 faca
+      se (locado[i] = 2) entao
+         escreval ("")
+         escreval ("+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=")
+         escreval ("NOME DO FILME : ",nomef[i])
+         escreval ("+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=")
+         escreval ("")
+         escreval ("ANO DE LANÇAMENTO : (",anof[i],")")
+         escreval ("Este filme foi alugado : (",vezesalug[i],")")
+         escreval ("DISPONIVEL PARA LOCAR ")
+         escreval ("")
+         escreval ("")
+         escreval ("Você quer locar este filme ? ")
+         escreval ("Digite 1 para SIM")
+         escreval ("Digite 2 para NÃO")
+         leia (decisao)
+      fimse
+      se (decisao = 1) entao
+         locado[i] <- 1
+         escreval ("")
+         escreval(" FILME LOCADO :) ")
+         vezesalug[i] <- (vezesalug[i] + 1)
+      fimse
+   fimpara
+   retorne 0
+fimfuncao
+
+//==============================================================================
+//A opção devolver um filme deve possibilitar ao usuário escolher dentre a lista
+//de filmes locados e marcar como disponível.
+funcao devolver : inteiro
+
+var
+   i, opiniao : inteiro
+inicio
+   para i de 0 ate (quantitot - 1) passo 1 faca
+      se (locado[i] = 1) entao
+        escreval ("")
+        escreval ("------------------------------------")
+        escreval ("FILME LOCADO NO MOMENTO : ",nomef[i])
+        escreval ("------------------------------------")
+        escreval ("")
+        escreval ("")
+        escreval ("Você quer devolver este filme ? ")
+        escreval ("Digite 1 para SIM")
+        escreval ("Digite 2 para NÃO")
+        leia (opiniao)
+      fimse
+      se (opiniao = 1) entao
+         locado[i] <- 2
+         escreval ("")
+         escreval(" FILME ENTREGUE :) ")
+      fimse
+   fimpara
+   retorne 0
+fimfuncao
+
+//==============================================================================
+//A opção Filme mais locado deve imprimir todas as informações sobre o filme mais
+//locado durante a execução do programa
+funcao maislocado : inteiro
+
+var
+   i: inteiro
+   
+inicio
+   maior <- 0
+   para i de 0 ate (quantitot - 1) passo 1 faca
+      se (vezesalug[i] > vezesalug[maior]) entao
+         maior <- i
+      fimse
+   fimpara
+   escreval ("")
+   escreval ("")
+   escreval ("O Filme mais locado foi : ",nomef[maior])
+   escreval ("ANO DE LANÇAMENTO : (",anof[maior],")")
+   escreval ("Este filme foi alugado : (",vezesalug[maior],")")
+   escreval ("")
+   retorne 0
+fimfuncao
+
+//==============================================================================
+
+funcao menu : inteiro
+
+var
+   opcao : inteiro
+   comando : inteiro
+inicio
+   repita
+      escreval ("=============================")
+      escreval (" OPÇÕES DA LOCADORA DE FILMES")
+      escreval ("=============================")
+      escreval (" ")
+      escreval ("[1] Cadastrar um filme ")
+      escreval ("[2] Listar Filmes disponíveis ")
+      escreval ("[3] Filmes locados ")
+      escreval ("[4] Alugar um filme ")
+      escreval ("[5] Devolver um filme ")
+      escreval ("[6] Filme mais locado ")
+      escreval ("[7] Sair do programa  ")
+      escreval (" ")
+      escreva ("Digite um número para escolher uma opção: ")
+      leia (opcao)
+      escolha (opcao)
+      caso 1
+         comando <- cadastrar
+      caso 2
+         comando <- disponiveis
+      caso 3
+         comando <- indisponivel
+      caso 4
+         comando <- alugar
+      caso 5
+         comando <- devolver
+      caso 6
+         comando <- maislocado
+      caso 7
+
+      fimescolha
+   ate (opcao = 7)
+   retorne 0
+fimfuncao
+
+//==============================================================================
+Inicio
+   escreval ("               ___                  __        ___        _         ")
+   escreval ("              / __|__ _ _ __  ___  / _|___   / __|___ __| |___ ___ ")
+   escreval ("             | (_ / _` | '  \/ -_) > _|_ _| | (__/ _ / _` / -_(_-< ")
+   escreval ("              \___\__,_|_|_|_\___| \_____|   \___\___\__,_\___/__/ ")
+   escreval ("                                         o                         ")
+   escreval ("                                    o    |                         ")
+   escreval ("                                     \   |                         ")
+   escreval ("                                      \  |                         ")
+   escreval ("                                       \.|-.                       ")
+   escreval ("                                       (\|  )                      ")
+   escreval ("                              .==================.                 ")
+   escreval ("                              | .--------------. |                 ")
+   escreval ("                              | |::.::.::.::.::| |                 ")
+   escreval ("                              | |'::'::'::'::':| |                 ")
+   escreval ("                              | |::.::.::.::.::| |                 ")
+   escreval ("                              | |:'::'::'::'::'| |                 ")
+   escreval ("                              | |::.::.::.::.::| |                 ")
+   escreval ("                              | '--------------'o|                 ")
+   escreval ("                              | LI LI '''''''   o|                 ")
+   escreval ("                              |==================|                 ")
+   escreval ("                              |  .------------.  |                 ")
+   escreval ("                              | /              \ |                 ")
+   escreval ("                              |/                \|                 ")
+   escreval ("                              '                  '                 ")
+   abertura <- menu
+
+
+
+Fimalgoritmo
